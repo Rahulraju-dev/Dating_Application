@@ -41,21 +41,49 @@ public class UserController {
 	public ResponseEntity<?> findUserByAge(@PathVariable int age){
 		return userService.findUserByAge(age);
 	}
+	
 	@GetMapping("/users/name/{name}")
 	public ResponseEntity<?> findUserByName(@PathVariable String name){
 		return userService.findUserByName(name);
 	}
+	
 	@GetMapping("/users/phone/{phone}")
 	public ResponseEntity<?> findUserByPhone(@PathVariable long phone){
 		return userService.findUserByPhone(phone);
 	}
-	@GetMapping("/users/email")
-	public ResponseEntity<?> findUserByEmail(@RequestParam String email){
+	
+	@GetMapping("/users/email/{email}")
+	public ResponseEntity<?> findUserByEmail(@PathVariable String email){
 		return userService.findUserByEmail(email);
 	}
+	
 	@GetMapping("/users/best-match/{id}/{top}")
 //	which user id and how many top matches to find
 	public ResponseEntity<?> findBestMatch(@PathVariable int id,@PathVariable int top){
 		return userService.findBestMatch(id,top);
 	}
+	
+	
+	//matching names should come can reduce the
+	@GetMapping("/users/search/name/{letters}")
+	public ResponseEntity<?> searchByName(@PathVariable String letters){
+		return userService.searchByName(letters);
+	}
+	@GetMapping("/users/search/email/{letters}")
+	public ResponseEntity<?> searchByEmail(@PathVariable String letters){
+		return userService.searchByEmail(letters);
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }
